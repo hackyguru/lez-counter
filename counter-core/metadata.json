@@ -1,0 +1,19 @@
+{
+  "name": "lezcounter_core",
+  "version": "0.1.0",
+  "type": "core",
+  "interface": "universal",
+  "category": "blockchain",
+  "description": "LEZ Counter core — one number on the Logos Execution Zone testnet that everyone shares (deployed counter program + embedded wallet)",
+  "codegen": {
+    "impl_header": "src/counter_impl.h",
+    "impl_class": "LezCounterImpl"
+  },
+  "main": "lezcounter_core_plugin",
+  "dependencies": [],
+  "nix": {
+    "packages": { "build": [], "runtime": ["nlohmann_json"] },
+    "external_libraries": [ { "name": "wallet_ffi" } ],
+    "cmake": { "find_packages": [], "extra_sources": [], "extra_include_dirs": [], "extra_link_libraries": [] }
+  }
+}
