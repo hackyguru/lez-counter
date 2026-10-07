@@ -1,28 +1,56 @@
+<div align="center">
+
+<img src="counter-ui/icons/lezcounter.png" alt="LEZ Counter logo" width="128" height="128">
+
 # LEZ Counter
 
-One number on the Logos Execution Zone that everyone shares. A tiny program
-is deployed once to the public LEZ v0.3 testnet, and every copy of this
-Basecamp module, on anyone's machine, reads and bumps the same counter. It's
-the "hello world" of LEZ contracts, like a counter contract on an Ethereum
-testnet.
+**One number on the Logos Execution Zone that everyone shares.**
 
-```
-lez-counter/
-├── counter-program/   the on-chain program (Rust → risc0 guest), build.sh, counter.bin
-├── counter-core/      lezcounter_core — universal C++ module, links the LEZ wallet FFI
-│   └── tests/         harness: deploy / use / increment / state against the testnet
-├── counter-ui/        lezcounter — QML (big number, +1/+5, live feed, details)
-└── install.sh         drop both into a local Basecamp
-```
+A community-built, **unofficial** [Logos Basecamp](https://logos.co) module. A
+tiny program is deployed once to the public LEZ v0.3 testnet, and every copy of
+this module, on anyone's machine, reads and bumps the same counter. It's the
+"hello world" of LEZ contracts, like a counter contract on an Ethereum testnet.
 
-## Download
+![Basecamp](https://img.shields.io/badge/Logos%20Basecamp-0.2.3-2e7d5b)
+![Network](https://img.shields.io/badge/network-LEZ%20testnet%20v0.3-6f42c1)
+![Platform](https://img.shields.io/badge/platform-macOS%20arm64%20%7C%20Linux%20x86__64-lightgrey)
+![Status](https://img.shields.io/badge/status-experimental-orange)
+![Unofficial](https://img.shields.io/badge/module-unofficial-red)
 
-Grab `logos-lezcounter_core-module-lib.lgx` and `logos-lezcounter-module.lgx` from the
-[latest release](https://github.com/hackyguru/lez-counter/releases/latest). Each holds
-both macOS (Apple Silicon) and Linux (x86_64) builds. In Basecamp, open
-**Modules → Install LGX Package** and install the core first, then the UI.
-Releases are built by [`.github/workflows/release.yml`](.github/workflows/release.yml)
-when a `v*` tag is pushed.
+</div>
+
+> [!WARNING]
+> **Unofficial, experimental, testnet only.** This is not an official Logos
+> module and is not affiliated with or endorsed by Logos or IFT. It talks to
+> the public LEZ v0.3 testnet, whose LGO has no value and which can be reset at
+> any time.
+
+---
+
+## Contents
+
+- [Quick start](#quick-start)
+- [Live deployment](#live-deployment)
+- [How it works](#how-it-works)
+- [Build from source](#build-from-source)
+- [Verifying it independently](#verifying-it-independently)
+- [Things that bit](#things-that-bit-so-you-dont-have-to)
+
+## Quick start
+
+1. Download `logos-lezcounter_core-module-lib.lgx` and `logos-lezcounter-module.lgx`
+   from the [latest release](https://github.com/hackyguru/lez-counter/releases/latest).
+   Each holds both macOS (Apple Silicon) and Linux (x86_64) builds.
+2. In Basecamp, open **Modules → Install LGX Package** and install the core
+   first, then the UI.
+3. Open **lezcounter** in the sidebar and tap **+1**. The module fetches the
+   LGO it needs for fees from the testnet faucet by itself, so there's nothing
+   to configure.
+
+The packages contain the program address, so everyone who installs them talks
+to the same counter. Releases are built by
+[`.github/workflows/release.yml`](.github/workflows/release.yml) whenever a
+`v*` tag is pushed.
 
 ## Live deployment
 
@@ -57,7 +85,18 @@ block, 30–60 s.
   own increments show as "You added N"; everything else is "Someone added
   N".
 
-## Build, deploy, install
+## Build from source
+
+```
+lez-counter/
+├── counter-program/   the on-chain program (Rust → risc0 guest), build.sh, counter.bin
+├── counter-core/      lezcounter_core — universal C++ module, links the LEZ wallet FFI
+│   └── tests/         harness: deploy / use / increment / state against the testnet
+├── counter-ui/        lezcounter — QML (big number, +1/+5, live feed, details)
+├── verify.sh          read the counter straight from the chain with curl
+└── install.sh         drop both into a local Basecamp
+```
+
 
 ```bash
 # 1. Program (needs Docker running, cargo-risczero 3.0.5, and `rzup install rust`)
@@ -94,17 +133,6 @@ If the module and the script agree, the number really is on the chain.
    Live feed, and `./verify.sh` shows +1 on both machines.
 4. Swap roles.
 
-## Sharing it
-
-The built `.lgx` packages contain the program address, so anyone who installs
-them talks to the same counter. Nothing to configure, and LGO is fetched for
-them. Two ways to hand it out:
-
-- Publish both modules to the catalog (modules.hackyguru.com). Its CI builds
-  Linux and macOS variants, and people install from Basecamp.
-- Send the two `.lgx` files. The local build here is **macOS arm64 only**;
-  Linux and Windows users need the CI build.
-
 ## Things that bit (so you don't have to)
 
 - **The program_deployment README is out of date for v0.3.** There's no
@@ -117,5 +145,4 @@ them. Two ways to hand it out:
   `r0.1.88` is too old for LEZ's dependencies (`ruint` needs rustc 1.90).
   `build.sh` sets this.
 - **Testnet resets wipe deployed programs.** Redeploy, then update
-  `kDefaultProgram` or use the Details field. Part 5 (the v0.2 SPEL counter)
-  is superseded by this one.
+  `kDefaultProgram` or use the Details field.
