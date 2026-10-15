@@ -5,8 +5,8 @@
 #   ./verify.sh watch      print it again whenever it changes
 set -euo pipefail
 SEQ="${SEQ:-https://testnet.lez.logos.co}"
-PROGRAM="${PROGRAM:-5ShXhcA9R972B2BgbomP2Qi3JM1gxGw7Yf5NHwA1fvv4}"
-COUNTER="${COUNTER:-8kUkUj457FX6bEQSdk48jbXhsUAdR35avo1J2Hp6j3iy}"
+PROGRAM="${PROGRAM:-473ERB4qt4as8KUbAvc9gm6hWxb6Mt7q3eANnsNLx4MN}"
+COUNTER="${COUNTER:-FkVJaxkLU7mWmndxVQoKjVE2e34wWBwoXUxdcynSNYcw}"
 
 read_value() {
     curl -s -m 15 -X POST "$SEQ" -H 'content-type: application/json' \

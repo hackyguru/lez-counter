@@ -21,11 +21,11 @@ namespace fs = std::filesystem;
 
 namespace {
 
-// The counter program on the LEZ v0.3 public testnet, deployed 2026-10-02 from
+// The counter program on the LEZ v0.3 public testnet, redeployed 2026-10-15 (after a testnet reset) from
 // counter-program/counter.bin (image id 4316d160…). After a testnet reset,
 // redeploy (tests/run.sh deploy) and either update this or use setProgram() /
 // the UI's settings.
-constexpr const char* kDefaultProgram = "5ShXhcA9R972B2BgbomP2Qi3JM1gxGw7Yf5NHwA1fvv4";
+constexpr const char* kDefaultProgram = "473ERB4qt4as8KUbAvc9gm6hWxb6Mt7q3eANnsNLx4MN";
 
 // Every client finds the counter at the public PDA of (program, this seed).
 // The program would accept any account; this is the convention that makes

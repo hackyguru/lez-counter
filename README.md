@@ -56,12 +56,12 @@ to the same counter. Releases are built by
 
 | | |
 |---|---|
-| Program (the "contract address") | `5ShXhcA9R972B2BgbomP2Qi3JM1gxGw7Yf5NHwA1fvv4` |
-| Counter account (where the number lives) | `8kUkUj457FX6bEQSdk48jbXhsUAdR35avo1J2Hp6j3iy` |
+| Program (the "contract address") | `473ERB4qt4as8KUbAvc9gm6hWxb6Mt7q3eANnsNLx4MN` |
+| Counter account (where the number lives) | `FkVJaxkLU7mWmndxVQoKjVE2e34wWBwoXUxdcynSNYcw` |
 | Image ID | `4316d160e5883685c3015b45dd9f5873b3b7d2e07b61192aafe90bd3e5d64223` |
-| Deployed | 2026-10-02: 3 segments + header, ~6½ min, 0.0019 LGO |
+| Deployed | 2026-10-15 (redeployed after a testnet reset), 0.0019 LGO |
 
-Verified with two separate wallets: the deployer added 5 (5), a fresh wallet
+The original 2026-10-02 deployment was verified with two separate wallets: the deployer added 5 (5), a fresh wallet
 with no LGO pointed at the address and added 3 after an automatic faucet
 top-up (8), and the deployer read 8. A public increment takes about one
 block, 30–60 s.
